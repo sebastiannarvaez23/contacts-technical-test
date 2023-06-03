@@ -1,11 +1,14 @@
 from sqlalchemy import Column, Integer, String
-from app.db.base import Base
+from sqlalchemy.ext.declarative import declarative_base
+
+Base = declarative_base()
 
 
 class Contact(Base):
-    __tablename__ = "contact"
+    __tablename__ = "contacts"
 
-    email = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True)
+    email = Column(String, unique=True, index=True)
     firstname = Column(String)
     lastname = Column(String)
     phone = Column(String)
